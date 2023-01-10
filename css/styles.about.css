@@ -1,0 +1,17 @@
+.bienvenidos{
+    text-align: center;
+}
+
+.aboutus{
+    text-align: center;
+}
+
+.seguimiento{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.seguimiento img{
+  width: 700px;
+}

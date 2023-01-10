@@ -1,0 +1,91 @@
+.box{
+    height: 300px;
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+[data-simplebar] {
+    position: relative;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+  
+.simplebar-offset {
+direction: inherit !important;
+box-sizing: inherit !important;
+resize: none !important;
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+padding: 0;
+margin: 0;
+-webkit-overflow-scrolling: touch;
+}
+
+.simplebar-content-wrapper {
+direction: inherit;
+box-sizing: border-box !important;
+position: relative;
+display: block;
+height: 100%; /* Required for horizontal native scrollbar to not appear if parent is taller than natural height */
+width: auto;
+visibility: visible;
+max-width: 100%; /* Not required for horizontal scroll to trigger */
+max-height: 100%; /* Needed for vertical scroll to trigger */
+scrollbar-width: none;
+}
+
+.simplebar-content-wrapper::-webkit-scrollbar,
+.simplebar-hide-scrollbar::-webkit-scrollbar {
+display: none;
+}
+
+.simplebar-track {
+z-index: 1;
+position: absolute;
+right: 0;
+bottom: 0;
+pointer-events: none;
+overflow: hidden;
+}
+
+.simplebar-scrollbar {
+position: absolute;
+right: 2px;
+width: 7px;
+min-height: 10px;
+}
+
+.simplebar-scrollbar:before {
+position: absolute;
+content: '';
+background: black;
+border-radius: 7px;
+left: 0;
+right: 0;
+opacity: 0;
+transition: opacity 0.2s linear;
+}
+
+.simplebar-scrollbar.simplebar-visible:before {
+/* When hovered, remove all transitions from drag handle */
+opacity: 0.5;
+transition: opacity 0s linear;
+}
+
+.simplebar-track.simplebar-vertical {
+top: 0;
+width: 11px;
+}
+
+.simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+top: 2px;
+bottom: 2px;
+}
