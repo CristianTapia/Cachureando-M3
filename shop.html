@@ -9,6 +9,8 @@
 			rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+		<!-- Bootstrap 5 -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<!-- Fontawesome Icons -->
 		<script src="https://kit.fontawesome.com/ae4293d1b9.js" crossorigin="anonymous"></script>
 
@@ -34,28 +36,10 @@
 	</head>
 
 	<body>
-		<!-- Top bar -->
-		<div class="py-1 bg-primary">
-			<div class="container">
-				<div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
-					<div class="col-lg-12 d-block">
-						<div class="row d-flex">
-							<div class="col-md pr-4 d-flex topper align-items-center">
-								<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-								<span class="text">+56 9 1234 5678</span>
-							</div>
-							<div class="col-md pr-4 d-flex topper align-items-center">
-								<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-								<span class="text">ventas@cachureando.cl</span>
-							</div>
-							<div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
-								<span class="text">Envíos de 1 a 3 dias</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		
+		<!--------------------------
+		-	   	   Navbar	       -
+		--------------------------->
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 			<div class="container">
 				<a class="navbar-brand" href="shop.html">Cachureando</a>
@@ -71,8 +55,12 @@
 						<li class="nav-item"><a href="shop.html" class="nav-link">Tienda</a></li>
 						<li class="nav-item"><a href="about.html" class="nav-link">Sobre Nosotros</a></li>
 						<li class="nav-item"><a href="contact.html" class="nav-link">Contacto</a></li>
-						<li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span
-									class="icon-shopping_cart"></span>[0]</a></li>
+						
+						<!-- <li class="nav-item cta cta-colored"><button data-bs-toggle="offcanvas" class="nav-link"><span
+									class="icon-shopping_cart"></span>[0]</button></li> -->
+						
+						<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable body scrolling</button>
+						
 
 					</ul>
 				</div>
@@ -80,7 +68,10 @@
 		</nav>
 		<!-- END nav -->
 
-		<!--- CATEGORIAS --->
+		<!--------------------------
+		-	   	  Categorias       -
+		--------------------------->
+
 		<section class="ftco-section">
 			<div class="container">
 				<div class="row justify-content-center">
@@ -109,7 +100,7 @@
 								<div class="overlay"></div>
 							</a>
 							<div class="text py-3 pb-4 px-3 text-center">
-								<h3><a href="#">CONSOLA PASIVA INTERFAZ USB NOVIK NVK i06BT</a></h3>
+								<h3><a href="#" class="item-title">CONSOLA PASIVA INTERFAZ USB NOVIK NVK i06BT</a></h3>
 								<div class="d-flex">
 									<div class="pricing">
 										<p class="price"><span class="mr-2 price-dc">$98.990</span><span class="price-sale">$79.990</span></p>
@@ -132,7 +123,7 @@
 								<div class="overlay"></div>
 							</a>
 							<div class="text py-3 pb-4 px-3 text-center">
-								<h3><a href="#">MICROFONO DE ESTUDIO AKG H80</a></h3>
+								<h3><a href="#" class="item-title">MICROFONO DE ESTUDIO AKG H80</a></h3>
 								<div class="d-flex">
 									<div class="pricing">
 										<p class="price"><span class="price-sale">$367.990</span></p>
@@ -155,7 +146,7 @@
 								<div class="overlay"></div>
 							</a>
 							<div class="text py-3 pb-4 px-3 text-center">
-								<h3><a href="#">CONSOLA PASIVA INTERFAZ USB NOVIK NVK i08BT</a></h3>
+								<h3><a href="#" class="item-title">CONSOLA PASIVA INTERFAZ USB NOVIK NVK i08BT</a></h3>
 								<div class="d-flex">
 									<div class="pricing">
 										<p class="price"><span class="mr-2 price-dc">$134.990</span><span class="price-sale">$107.990</span></p>
@@ -178,7 +169,7 @@
 								<div class="overlay"></div>
 							</a>
 							<div class="text py-3 pb-4 px-3 text-center">
-								<h3><a href="#">MICROFONO DE CINTILLO SKP HSP 2</a></h3>
+								<h3><a href="#" class="item-title">MICROFONO DE CINTILLO SKP HSP 2</a></h3>
 								<div class="d-flex">
 									<div class="pricing">
 										<p class="price"><span class="price-sale">$104.990</span></p>
@@ -201,7 +192,7 @@
 								<div class="overlay"></div>
 							</a>
 							<div class="text py-3 pb-4 px-3 text-center">
-								<h3><a href="#">MICROFONO DE ESTUDIO SKP PODCAST 200</a></h3>
+								<h3><a href="#" class="item-title">MICROFONO DE ESTUDIO SKP PODCAST 200</a></h3>
 								<div class="d-flex">
 									<div class="pricing">
 										<p class="price"><span class="price-sale">$73.990</span></p>
@@ -223,7 +214,7 @@
 								<div class="overlay"></div>
 							</a>
 							<div class="text py-3 pb-4 px-3 text-center">
-								<h3><a href="#">BRAZO PLEGABLE MICROFONO CONDENSADOR</a></h3>
+								<h3><a href="#" class="item-title">BRAZO PLEGABLE MICROFONO CONDENSADOR</a></h3>
 								<div class="d-flex">
 									<div class="pricing">
 										<p class="price"><span class="price-sale">$72.990</span></p>
@@ -245,7 +236,7 @@
 								<div class="overlay"></div>
 							</a>
 							<div class="text py-3 pb-4 px-3 text-center">
-								<h3><a href="#">CONECTOR DE MICROFONO SKP HC2 SEN</a></h3>
+								<h3><a href="#" class="item-title">CONECTOR DE MICROFONO SKP HC2 SEN</a></h3>
 								<div class="d-flex">
 									<div class="pricing">
 										<p class="price"><span class="price-sale">$15.990</span></p>
@@ -267,7 +258,7 @@
 								<div class="overlay"></div>
 							</a>
 							<div class="text py-3 pb-4 px-3 text-center">
-								<h3><a href="#">TESTER PARA CABLE SKP CT 400</a></h3>
+								<h3><a href="#" class="item-title">TESTER PARA CABLE SKP CT 400</a></h3>
 								<div class="d-flex">
 									<div class="pricing">
 										<p class="price"><span class="price-sale">$65.990</span></p>
@@ -323,6 +314,24 @@
 				</div>
 			</div>
 		</section>
+		
+		<!--------------------------
+		-	   Offcanvas carrito   -
+		--------------------------->
+		
+		<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+			<div class="offcanvas-header">
+			<h5 class="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			</div>
+			<div class="offcanvas-body">
+			<p>Try scrolling the rest of the page to see this option in action.</p>
+			</div>
+		</div>
+		
+
+
+
 		<!--- FOOTER ---->
 
 		<footer class="ftco-footer ftco-section">
@@ -403,8 +412,8 @@
 					stroke="#F96D00" />
 			</svg>
 		</div>
-
-
+		<!-- Bootstrap JS 5 -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 		<!-- JQuery-->
 		<script src="js/jquery.min.js"></script>
 
@@ -424,6 +433,7 @@
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 		<script src="js/google-map.js"></script>
 		<script src="js/main.js"></script>
+		<script src="js/carrito.js"></script>
 		
   	</body>
 </html>
