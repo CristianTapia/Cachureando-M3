@@ -78,7 +78,7 @@ function quantityChanged(event) {
     input.value <= 0 ? (input.value = 1) : null;
 }
 
-
+// Probando merge
 
 
 // Eliminar producto
