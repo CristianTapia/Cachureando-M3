@@ -1,10 +1,6 @@
-
 // Agregar productos al carrito
 
 const btnCarrito = document.querySelectorAll(".buy-now");
-
-console.log(btnCarrito)
-console.log("hola")
 
 btnCarrito.forEach((addToCartButton) => {
     addToCartButton.addEventListener("click", addToCardClicked);
@@ -41,8 +37,15 @@ function addItemToShoppingCart (itemTitle, itemPrice, itemImg) {
               onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
               <i class="fas fa-minus"></i>
             </button>
+
+
+
             <input id="form1" min="0" name="quantity" value="2" type="number"
-              class="form-control form-control-sm" />
+              class="add-items form-control form-control-sm" />
+
+
+
+
             <button class="btn btn-link px-2"
               onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
               <i class="fas fa-plus"></i>
@@ -51,14 +54,8 @@ function addItemToShoppingCart (itemTitle, itemPrice, itemImg) {
           <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
             <h5 class="mb-0">${itemPrice}</h5>
           </div>
-          
-          
-
           <div class="delete col-md-1 col-lg-1 col-xl-1 text-end">
             <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-
-
-
           </div>
         </div>
       </div>
@@ -68,12 +65,20 @@ function addItemToShoppingCart (itemTitle, itemPrice, itemImg) {
     shoppingCartItemContainer.append(shoppingCartNow);
     shoppingCartNow.innerHTML = shoppingCartContent;
     shoppingCartNow.querySelector(".delete").addEventListener("click", removeShoppingCartItem)
+    shoppingCartNow.querySelector(".add-items").addEventListener("change", quantityChanged)
 }
 
 function removeShoppingCartItem(event) {
     const buttonClicked = event.target;
     buttonClicked.closest(".card").remove();
 }
+
+function quantityChanged(event) {
+    const input = event.target;
+    input.value <= 0 ? (input.value = 1) : null;
+}
+
+
 
 
 // Eliminar producto
