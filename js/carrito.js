@@ -19,6 +19,7 @@ function addToCardClicked(event) {
 
 // Agregar items a off canvas
 function addItemToShoppingCart (itemTitle, itemPrice, itemImg) {
+
     const shoppingCartNow = document.createElement("div");
     const shoppingCartContent = `
     <!-- Product 1 -->
