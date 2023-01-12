@@ -3,9 +3,12 @@ Trabajo grupal UNAB
 
 **Integrantes:**
 
-- Katherine Canales | https://github.com/KathyRoo
-- Javier Alcayaga | https://github.com/jalcayaga
+- Loreto Rodríguez | https://github.com/Loretoalmendro
+- Ender Perez | https://github.com/enderdpl
+- Reynaldo Blanco | https://github.com/renyblanco
+- Jimena Aliaga | https://github.com/JimenaGitHub
 - Cristian Tapia | https://github.com/CristianTapia
 
 **Repositorio de GitHub:**
-https://github.com/KathyRoo/cachureando2.0
+
+https://github.com/CristianTapia/Cachureando-M3
