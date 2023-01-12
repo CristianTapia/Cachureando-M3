@@ -366,7 +366,13 @@
 				<strong class="cart-total-title">Total</strong>
 				<span class="cart-total-price">$0</span>
 			</div>
-			<button class="btn btn-primary btn-purchase" type="button">Procesar</button>
+			<!-- <button type="button" class="btn btn-primary btn-purchase" data-bs-toggle="modal" data-bs-target="#exampleModal">
+				procesar
+			</button> -->
+			<button type="button" class="btn btn-primary btn-purchase" onclick="abrirModal()">
+				Procesar Compra
+			</button>
+			<!-- <button class="btn btn-primary btn-purchase" type="button">Procesar</button> -->
 		</div>
 
 		<!--- Footer ---->		
@@ -470,5 +476,198 @@
 		<script src="js/scrollax.min.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/carrito.js"></script>
+
+		<script>
+			var myModal
+
+			function abrirModal(id) {
+				myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+					keyboard: false
+				})
+				var cartItems = document.getElementsByClassName("offcanvas-body")[0];
+				while (cartItems.hasChildNodes()) {
+					cartItems.removeChild(cartItems.firstChild);
+				}
+				updateCartTotal();
+				updateItemsTotal();
+				myModal.show();
+			}
+			//var myModal = document.getElementById('exampleModal');
+			//;
+			// $('#exampleModal').modal('hide');
+			// $('body').removeClass('modal-open');
+			// $('.modal-backdrop').remove();
+			
+			//document.getElementById('subtotal').innerHTML = "$ " + 'total';
+			function enviarCorreo() {
+				myModal.hide()
+				var sEmail = document.getElementById('envio_correo').value;
+				if (sEmail != null) {
+					var sLink = "mailto:" + escape(sEmail)
+						+ "?subject=" + escape("Boleta de Compra # 123456")
+						+ "&body=" + 'insTextoComp';
+					window.location.href = sLink;
+				}
+			}
+		</script>
 	</body>
 </html>
+
+<!-- Modal Checkout -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">Detalle de la compra</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-7">
+							<form action="#" class="billing-form">
+								<div class="row align-items-end">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="firstname">Primer Nombre</label>
+											<input type="text" class="form-control" placeholder="Nombre">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="lastname">Apellido</label>
+											<input type="text" class="form-control" placeholder="Apellido">
+										</div>
+									</div>
+									<div class="w-100"></div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<label for="country"> Pais</label>
+											<div class="select-wrap">
+												<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+												<select name="Pais" id="" class="form-control">
+													<option value="CL">Chile</option>
+													<option value="AR">Argentina</option>
+													<option value="PE">Peru</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="w-100"></div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="streetaddress">Dirección Domicilio</label>
+											<input type="text" class="form-control" placeholder="Calle, Avenida, #">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<input type="text" class="form-control"
+												placeholder="Departamento, Casa">
+										</div>
+									</div>
+									<div class="w-100"></div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="towncity">Ciudad</label>
+											<input type="text" class="form-control" placeholder="Ciudad">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="postcodezip">Codigo postal *</label>
+											<input type="text" class="form-control" placeholder="código postal">
+										</div>
+									</div>
+									<div class="w-100"></div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="phone">Telefono</label>
+											<input type="text" class="form-control" placeholder="Número de contacto">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="emailaddress">Correo electronico *</label>
+											<input type="text" class="form-control" id="envio_correo" placeholder="correo">
+										</div>
+									</div>
+									<div class="w-100"></div>
+									<!-- <div class="col-md-12">
+													<div class="form-group mt-4">
+														<div class="radio">
+															<label class="mr-3"><input type="radio" name="optradio"> Crear una cuenta</label>
+															<label><input type="radio" name="optradio"> enviar a una direccion distinta</label>
+														</div>
+													</div>
+												</div> -->
+								</div>
+							</form>
+						</div>
+						<div class="col-5">
+							<div class="row mt-5 pt-3">
+								<div class="col-md-12 d-flex mb-5">
+									<div class="cart-detail cart-total p-3 p-md-4">
+										<h3 class="billing-heading mb-4">Total</h3>
+										<p class="d-flex">
+											<span>Subtotal</span>
+											<span id="subtotal"></span>
+										</p>
+										<p class="d-flex">
+											<span>Delivery</span>
+											<span id="delivery"></span>
+										</p>
+										<p class="d-flex">
+											<span>Descuento</span>
+											<span id="descuento"></span>
+										</p>
+										<p class="d-flex">
+											<span>Impuesto</span>
+											<span id="impuesto"></span>
+										</p>
+										<hr>
+										<p class="d-flex total-price">
+											<span>Total</span>
+											<span id="totalisimo"></span>
+										</p>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="cart-detail p-3 p-md-4">
+										<h3 class="billing-heading mb-4">Metodo de pago</h3>
+										<div class="form-group">
+											<div class="col-md-12">
+												<div class="radio">
+													<label><input type="radio" name="optradio" class="mr-2"> Transferencia
+														bancaria</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-md-12">
+												<div class="radio">
+													<label><input type="radio" name="optradio" class="mr-2"> Check pago</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-md-12">
+												<div class="radio">
+													<label><input type="radio" name="optradio" class="mr-2"> Paypal</label>
+												</div>
+											</div>
+										</div>
+										
+										<input class="btn btn-primary py-3 px-4" type="button"
+												value="Comprar y enviar datos por mail" onclick="enviarCorreo()" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,5 +1,6 @@
 // Agregar productos al carrito
-
+var totalisimo = 0;
+var total = 0;
 if (document.readyState == "loading") {
   document.addEventListener("DOMContentLoaded", ready);
 } else {
@@ -27,12 +28,12 @@ function ready() {
     button.addEventListener("click", removeShoppingCartItem);
   }
  /*end*/
-  document
-    .getElementsByClassName("btn-purchase")[0]
-    .addEventListener("click", purchaseClicked);
+  // document
+  //   .getElementsByClassName("btn-purchase")[0]
+  //   .addEventListener("click", purchaseClicked);
 }
 
-function purchaseClicked(){
+function purchaseClicked() {
   //alert("Gracias por su compra");
   //var cartItems = document.getElementsByClassName("offcanvas-body")[0];
   //while (cartItems.hasChildNodes()){
@@ -40,7 +41,6 @@ function purchaseClicked(){
   //}
   //updateCartTotal();
   //updateItemsTotal();
-  window.location.href = "checkout.html";
 }
 
 function addToCardClicked(event) {
@@ -131,12 +131,12 @@ function updateCartTotal() {
 function updateItemsTotal() {
   var cartItemContainer = document.getElementsByClassName("offcanvas-body")[0];
   var cartRows = cartItemContainer.getElementsByClassName("cart-row");
-  var total = 0;
+  var totalisimo = 0;
   for (let i = 0; i < cartRows.length; i++) {
     var cartRow = cartRows[i];
     var quantityElement = cartRow.getElementsByClassName("cart-quantity-input")[0];
     var quantity = quantityElement.value;
-    var total = total + parseInt(quantity);
+    var totalisimo = totalisimo + parseInt(quantity);
   }
-  document.getElementById('id_compras').innerHTML = '<span class="icon-shopping_cart" ></span>[' + total + ']';
+  document.getElementById('id_compras').innerHTML = '<span class="icon-shopping_cart" ></span>[' + totalisimo + ']';
 }
