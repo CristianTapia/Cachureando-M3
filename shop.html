@@ -84,7 +84,7 @@
 								<h3><a href="#" class="item-title">CONSOLA PASIVA INTERFAZ USB NOVIK NVK i06BT</a></h3>
 								<div class="d-flex">
 									<div class="pricing">
-										<p class="price"><span class="mr-2 price-dc">$98.990</span><span class="price-sale">$79.990</span></p>
+										<p class="price"><span class="mr-2 price-dc">$98,990</span><span class="price-sale">$79,990</span></p>
 									</div>
 								</div>
 								<div class="bottom-area d-flex px-3">
@@ -366,13 +366,10 @@
 				<strong class="cart-total-title">Total</strong>
 				<span class="cart-total-price">$0</span>
 			</div>
-			<!-- <button type="button" class="btn btn-primary btn-purchase" data-bs-toggle="modal" data-bs-target="#exampleModal">
-				procesar
-			</button> -->
+
 			<button type="button" class="btn btn-primary btn-purchase" onclick="abrirModal()">
 				Procesar Compra
 			</button>
-			<!-- <button class="btn btn-primary btn-purchase" type="button">Procesar</button> -->
 		</div>
 
 		<!--- Footer ---->		
@@ -448,7 +445,8 @@
 		</footer>
 
 		<!-- loader -->
-		<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+		<div id="ftco-loader" class="show fullscreen">
+			<svg class="circular" width="48px" height="48px">
 				<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
 				<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
 					stroke="#F96D00" />
@@ -479,26 +477,23 @@
 
 		<script>
 			var myModal
-
-			function abrirModal(id) {
+			function abrirModal() {
+				// var cartItems = document.getElementsByClassName("offcanvas-body")[0];
+				// while (cartItems.hasChildNodes()) {
+				// 	cartItems.removeChild(cartItems.firstChild);
+				// }
+				// updateCartTotal();
+				// updateItemsTotal();
 				myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
-					keyboard: false
-				})
-				var cartItems = document.getElementsByClassName("offcanvas-body")[0];
-				while (cartItems.hasChildNodes()) {
-					cartItems.removeChild(cartItems.firstChild);
-				}
-				updateCartTotal();
-				updateItemsTotal();
+					keyboard: true
+				});
 				myModal.show();
+				let subtotal = document.getElementById('subtotal').innerHTML.replace("$", "");
+				subtotal = subtotal.replace(".","");
+				document.getElementById('impuesto').innerHTML = formato.format(subtotal*0.19);
+				document.getElementById('totalisimo').innerHTML = formato.format(subtotal * 1.19);
 			}
-			//var myModal = document.getElementById('exampleModal');
-			//;
-			// $('#exampleModal').modal('hide');
-			// $('body').removeClass('modal-open');
-			// $('.modal-backdrop').remove();
-			
-			//document.getElementById('subtotal').innerHTML = "$ " + 'total';
+
 			function enviarCorreo() {
 				myModal.hide()
 				var sEmail = document.getElementById('envio_correo').value;
@@ -523,7 +518,7 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<div class="container">
+				<!-- <div class="container"> -->
 					<div class="row justify-content-center">
 						<div class="col-7">
 							<form action="#" class="billing-form">
@@ -531,7 +526,7 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<label for="firstname">Primer Nombre</label>
-											<input type="text" class="form-control" placeholder="Nombre">
+											<input type="text" class="form-control" placeholder="Nombre" autofocus>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -666,7 +661,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				<!-- </div> -->
 			</div>
 		</div>
 	</div>
