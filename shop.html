@@ -359,7 +359,7 @@
 		<div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
 			<div class="offcanvas-header">
 				<h5 class="offcanvas-title" id="offcanvasScrollingLabel">Carrito de compras</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" id="btn_cierra"></button>
 			</div>
 			<div class="offcanvas-body"></div>
 			<div class="cart-total">
@@ -478,18 +478,20 @@
 		<script>
 			var myModal
 			function abrirModal() {
-				// var cartItems = document.getElementsByClassName("offcanvas-body")[0];
-				// while (cartItems.hasChildNodes()) {
-				// 	cartItems.removeChild(cartItems.firstChild);
-				// }
-				// updateCartTotal();
-				// updateItemsTotal();
+				let subtotal = document.getElementById('subtotal').innerHTML.replace("$", "");
+				var cartItems = document.getElementsByClassName("offcanvas-body")[0];
+				while (cartItems.hasChildNodes()) {
+					cartItems.removeChild(cartItems.firstChild);
+				}
+				updateCartTotal();
+				updateItemsTotal();
+				$('#btn_cierra').trigger('click');
 				myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
 					keyboard: true
 				});
 				myModal.show();
-				let subtotal = document.getElementById('subtotal').innerHTML.replace("$", "");
 				subtotal = subtotal.replace(".","");
+				document.getElementById('subtotal').innerHTML = formato.format(subtotal);
 				document.getElementById('impuesto').innerHTML = formato.format(subtotal*0.19);
 				document.getElementById('totalisimo').innerHTML = formato.format(subtotal * 1.19);
 			}

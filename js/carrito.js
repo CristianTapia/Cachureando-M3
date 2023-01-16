@@ -127,4 +127,4 @@ function updateItemsTotal() {
     var totalisimo = totalisimo + parseInt(quantity);
   }
   document.getElementById('id_compras').innerHTML = '<span class="icon-shopping_cart" ></span>[' + totalisimo + ']';
-}
+} 
