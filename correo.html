@@ -16,7 +16,7 @@
 		var sEmail = prompt("¿A quien quieres enviarlo?", "E-mail");
 		if(sEmail != null) {
 			var sLink = "mailto:" + escape(sEmail)
-			 + "?subject=" + escape("Te han compartirdo el siguente texto")
+			 + "?subject=" + escape("Te han compartido el siguente texto")
 			 + "&body=" + insTextoComp;
 			window.location.href = sLink;
 		}

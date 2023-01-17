@@ -499,10 +499,13 @@
 			function enviarCorreo() {
 				myModal.hide()
 				var sEmail = document.getElementById('envio_correo').value;
+				var cuerpo = 'subtotal : '+ document.getElementById('subtotal').innerHTML;
+				cuerpo += '\n impuesto :'+ document.getElementById('impuesto').innerHTML;
+				cuerpo += '\n total : '+ document.getElementById('totalisimo').innerHTML;
 				if (sEmail != null) {
 					var sLink = "mailto:" + escape(sEmail)
 						+ "?subject=" + escape("Boleta de Compra # 123456")
-						+ "&body=" + 'insTextoComp';
+						+ "&body=" + cuerpo;
 					window.location.href = sLink;
 				}
 			}
@@ -528,13 +531,13 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<label for="firstname">Primer Nombre</label>
-											<input type="text" class="form-control" placeholder="Nombre" autofocus>
+											<input type="text" class="form-control" id="nombre" placeholder="Nombre" autofocus>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
 											<label for="lastname">Apellido</label>
-											<input type="text" class="form-control" placeholder="Apellido">
+											<input type="text" class="form-control" id="apellido" placeholder="Apellido">
 										</div>
 									</div>
 									<div class="w-100"></div>
@@ -554,34 +557,33 @@
 									<div class="w-100"></div>
 									<div class="col-md-6">
 										<div class="form-group">
-											<label for="streetaddress">Dirección Domicilio</label>
-											<input type="text" class="form-control" placeholder="Calle, Avenida, #">
+											<label for="streetaddress">Dirección Domicilio *</label>
+											<input type="text" class="form-control" id="dir" placeholder="Calle, Avenida, #">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
-											<input type="text" class="form-control"
-												placeholder="Departamento, Casa">
+											<input type="text" class="form-control" id="numero" placeholder="Departamento, Casa">
 										</div>
 									</div>
 									<div class="w-100"></div>
 									<div class="col-md-6">
 										<div class="form-group">
-											<label for="towncity">Ciudad</label>
-											<input type="text" class="form-control" placeholder="Ciudad">
+											<label for="towncity">Ciudad *</label>
+											<input type="text" class="form-control" id="ciudad" placeholder="Ciudad">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
 											<label for="postcodezip">Codigo postal *</label>
-											<input type="text" class="form-control" placeholder="código postal">
+											<input type="text" class="form-control" id="postal" placeholder="código postal">
 										</div>
 									</div>
 									<div class="w-100"></div>
 									<div class="col-md-6">
 										<div class="form-group">
-											<label for="phone">Telefono</label>
-											<input type="text" class="form-control" placeholder="Número de contacto">
+											<label for="phone">Telefono *</label>
+											<input type="text" class="form-control" id="telefono" placeholder="Número de contacto">
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -644,7 +646,7 @@
 										<div class="form-group">
 											<div class="col-md-12">
 												<div class="radio">
-													<label><input type="radio" name="optradio" class="mr-2"> Check pago</label>
+													<label><input type="radio" name="optradio" class="mr-2"> Mercado pago</label>
 												</div>
 											</div>
 										</div>
