@@ -6,9 +6,9 @@
 	<title>
 		EmailJS!
 	</title>
-	</meta>
+	<!-- </meta> -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-	</link>
+	<!-- </link> -->
 </head>
 
 <body>
@@ -20,21 +20,21 @@
 						Nombre:
 					</label>
 					<input class="form-control" type="text" v-model="from_name">
-					</input>
+					<!-- </input> -->
 				</div>
 				<div class="col-sm-6 col-sm-offset-3 form-group">
 					<label>
 						Asunto:
 					</label>
 					<input class="form-control" type="text" v-model="subject">
-					</input>
+					<!-- </input> -->
 				</div>
 				<div class="col-sm-6 col-sm-offset-3 form-group">
 					<label>
 						Correo:
 					</label>
 					<input class="form-control" type="email" v-model="from_email">
-					</input>
+					<!-- </input> -->
 				</div>
 				<div class="col-sm-6 col-sm-offset-3 form-group">
 					<label>
@@ -80,7 +80,7 @@
 						subject: this.subject,
 					};
 
-					emailjs.send("service_jit80bi", "boleta", data)
+					emailjs.send("service_jit80bi", "template_boleta", data)
 						.then(function (response) {
 							if (response.text === 'OK') {
 								alert('El correo se ha enviado de forma exitosa');

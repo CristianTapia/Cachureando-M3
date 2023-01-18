@@ -109,6 +109,8 @@ function updateCartTotal() {
     price = price.replace(".","");
     var quantity = quantityElement.value;
     total = total + (price * quantity);
+    console.log('Aca va total', total);
+    
   }
   console.log(formato.format(total));
   //total = Math.round(total * 100) / 100;

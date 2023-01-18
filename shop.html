@@ -420,11 +420,11 @@
 									</li>
 									<li class="mb-3">
 										<i class="fa-brands fa-whatsapp"></i><span class="text">&nbsp;&nbsp;&nbsp;&nbsp;+56
-											9 1234 5678</span></a>
+											9 1234 5678</span>
 									</li>
 									<li class="mb-3">
-										<i class="fa-regular fa-envelope"></i></span><span
-											class="text">&nbsp;&nbsp;&nbsp;&nbsp;info@cachureando.cl</span></a>
+										<i class="fa-regular fa-envelope"></i><span
+											class="text">&nbsp;&nbsp;&nbsp;&nbsp;info@cachureando.cl</span>
 									</li>
 								</ul>
 							</div>
@@ -460,6 +460,10 @@
 		<script src="js/jquery.min.js"></script>
 
 		<!-- Plug ins-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js">
+		</script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+		</script>
 		<script src="js/jquery-migrate-3.0.1.min.js"></script>
 		<script src="js/popper.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
@@ -476,6 +480,9 @@
 		<script src="js/carrito.js"></script>
 
 		<script>
+			(function () {
+				emailjs.init("m0bJyc8oDT7rSweoJ");
+			})();
 			var myModal
 			function abrirModal() {
 				let subtotal = document.getElementById('subtotal').innerHTML.replace("$", "");
@@ -498,17 +505,40 @@
 
 			function enviarCorreo() {
 				myModal.hide()
-				var sEmail = document.getElementById('envio_correo').value;
-				var cuerpo = 'subtotal : '+ document.getElementById('subtotal').innerHTML;
-				cuerpo += '\n impuesto :'+ document.getElementById('impuesto').innerHTML;
-				cuerpo += '\n total : '+ document.getElementById('totalisimo').innerHTML;
-				if (sEmail != null) {
-					var sLink = "mailto:" + escape(sEmail)
-						+ "?subject=" + escape("Boleta de Compra # 123456")
-						+ "&body=" + cuerpo;
-					window.location.href = sLink;
-				}
+				// var sEmail = document.getElementById('de_correo').value;
+				// var cuerpo = 'subtotal : '+ document.getElementById('subtotal').innerHTML;
+				// cuerpo += '\n impuesto :'+ document.getElementById('impuesto').innerHTML;
+				// cuerpo += '\n total : '+ document.getElementById('totalisimo').innerHTML;
+				// if (sEmail != null) {
+				// 	var sLink = "mailto:" + escape(sEmail)
+				// 		+ "?subject=" + escape("Boleta de Compra # 123456")
+				// 		+ "&body=" + cuerpo;
+				// 	window.location.href = sLink;
+				// }
+
+				var templateParams = {
+				to_name: document.getElementById('nombre').value+' '+document.getElementById('apellido').value,
+				dir: document.getElementById('dir').value,
+				numero: document.getElementById('numero').value,
+				ciudad: document.getElementById('ciudad').value,
+				de_correo: document.getElementById('de_correo').value,
+				message: 'subtotal : '+ document.getElementById('subtotal').innerHTML+'\n impuesto :'+ document.getElementById('impuesto').innerHTML+'\n total : '+ document.getElementById('totalisimo').innerHTML
+			};
+
+			emailjs.send("service_jit80bi", "template_boleta", templateParams)
+				.then(function (response) {
+					if (response.text === 'OK') {
+						alert('El correo se ha enviado de forma exitosa');
+					}
+					console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+				}, function (err) {
+					alert('Ocurrió un problema al enviar el correo');
+					console.log("FAILED. error=", err);
+				});
 			}
+
+			
+			
 		</script>
 	</body>
 </html>
@@ -524,13 +554,14 @@
 			</div>
 			<div class="modal-body">
 				<!-- <div class="container"> -->
-					<div class="row justify-content-center">
+					<div class="row justify-content-center" id="app">
 						<div class="col-7">
 							<form action="#" class="billing-form">
 								<div class="row align-items-end">
 									<div class="col-md-6">
 										<div class="form-group">
 											<label for="firstname">Primer Nombre</label>
+											<input class="form-control" type="text" >
 											<input type="text" class="form-control" id="nombre" placeholder="Nombre" autofocus>
 										</div>
 									</div>
@@ -589,18 +620,18 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<label for="emailaddress">Correo electronico *</label>
-											<input type="text" class="form-control" id="envio_correo" placeholder="correo">
+											<input type="text" class="form-control" id="de_correo" placeholder="correo">
 										</div>
 									</div>
 									<div class="w-100"></div>
 									<!-- <div class="col-md-12">
-													<div class="form-group mt-4">
-														<div class="radio">
-															<label class="mr-3"><input type="radio" name="optradio"> Crear una cuenta</label>
-															<label><input type="radio" name="optradio"> enviar a una direccion distinta</label>
-														</div>
-													</div>
-												</div> -->
+										<div class="form-group mt-4">
+											<div class="radio">
+												<label class="mr-3"><input type="radio" name="optradio"> Crear una cuenta</label>
+												<label><input type="radio" name="optradio"> enviar a una direccion distinta</label>
+											</div>
+										</div>
+									</div> -->
 								</div>
 							</form>
 						</div>
