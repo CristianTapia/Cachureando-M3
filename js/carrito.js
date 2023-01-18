@@ -101,7 +101,6 @@ function updateCartTotal() {
   var cartRows = cartItemContainer.getElementsByClassName("cart-row");
   var total = 0;
   for (var i = 0; i < cartRows.length; i++) {
-  
     var cartRow = cartRows[i];
     var priceElement = cartRow.getElementsByClassName("cart-price")[0];
     var quantityElement = cartRow.getElementsByClassName("cart-quantity-input")[0];
@@ -109,11 +108,7 @@ function updateCartTotal() {
     price = price.replace(".","");
     var quantity = quantityElement.value;
     total = total + (price * quantity);
-    console.log('Aca va total', total);
-    
   }
-  console.log(formato.format(total));
-  //total = Math.round(total * 100) / 100;
   document.getElementsByClassName("cart-total-price")[0].innerText = formato.format(total);
   document.getElementById('subtotal').innerHTML = formato.format(total);
 }

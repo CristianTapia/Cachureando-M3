@@ -485,18 +485,12 @@
 			})();
 			var myModal
 			function abrirModal() {
-				let subtotal = document.getElementById('subtotal').innerHTML.replace("$", "");
-				var cartItems = document.getElementsByClassName("offcanvas-body")[0];
-				while (cartItems.hasChildNodes()) {
-					cartItems.removeChild(cartItems.firstChild);
-				}
-				updateCartTotal();
-				updateItemsTotal();
 				$('#btn_cierra').trigger('click');
 				myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
 					keyboard: true
 				});
 				myModal.show();
+				let subtotal = document.getElementById('subtotal').innerHTML.replace("$", "");
 				subtotal = subtotal.replace(".","");
 				document.getElementById('subtotal').innerHTML = formato.format(subtotal);
 				document.getElementById('impuesto').innerHTML = formato.format(subtotal*0.19);
@@ -504,31 +498,42 @@
 			}
 
 			function enviarCorreo() {
+				let productos = '';
 				myModal.hide()
-				// var sEmail = document.getElementById('de_correo').value;
-				// var cuerpo = 'subtotal : '+ document.getElementById('subtotal').innerHTML;
-				// cuerpo += '\n impuesto :'+ document.getElementById('impuesto').innerHTML;
-				// cuerpo += '\n total : '+ document.getElementById('totalisimo').innerHTML;
-				// if (sEmail != null) {
-				// 	var sLink = "mailto:" + escape(sEmail)
-				// 		+ "?subject=" + escape("Boleta de Compra # 123456")
-				// 		+ "&body=" + cuerpo;
-				// 	window.location.href = sLink;
-				// }
-
+				var cartItemContainer = document.getElementsByClassName("offcanvas-body")[0];
+				var cartRows = cartItemContainer.getElementsByClassName("cart-row");
+				var total = 0;
+				for (var i = 0; i < cartRows.length; i++) {
+					var cartRow = cartRows[i];
+					var titleElement = cartRow.getElementsByClassName("cart-item-title")[0];
+					var quantityElement = cartRow.getElementsByClassName("cart-quantity-input")[0];
+					var priceElement = cartRow.getElementsByClassName("cart-price")[0];
+					var price = priceElement.innerHTML.replace("$", "");
+					price = price.replace(".","");
+					var quantity = quantityElement.value;
+					total = total + (price * quantity);
+					productos += '\n'+titleElement.innerHTML+'  '+quantityElement.value+' '+priceElement.innerHTML +' '+formato.format(total);
+					console.log(productos);
+				}
 				var templateParams = {
 				to_name: document.getElementById('nombre').value+' '+document.getElementById('apellido').value,
 				dir: document.getElementById('dir').value,
 				numero: document.getElementById('numero').value,
 				ciudad: document.getElementById('ciudad').value,
 				de_correo: document.getElementById('de_correo').value,
-				message: 'subtotal : '+ document.getElementById('subtotal').innerHTML+'\n impuesto :'+ document.getElementById('impuesto').innerHTML+'\n total : '+ document.getElementById('totalisimo').innerHTML
+				message: productos+'\n subtotal : '+ document.getElementById('subtotal').innerHTML+'\n impuesto :'+ document.getElementById('impuesto').innerHTML+'\n total : '+ document.getElementById('totalisimo').innerHTML
 			};
 
 			emailjs.send("service_jit80bi", "template_boleta", templateParams)
 				.then(function (response) {
 					if (response.text === 'OK') {
 						alert('El correo se ha enviado de forma exitosa');
+						var cartItems = document.getElementsByClassName("offcanvas-body")[0];
+						while (cartItems.hasChildNodes()) {
+							cartItems.removeChild(cartItems.firstChild);
+						}
+						updateCartTotal();
+						updateItemsTotal();
 					}
 					console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
 				}, function (err) {
