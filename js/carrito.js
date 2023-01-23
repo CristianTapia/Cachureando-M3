@@ -5,23 +5,28 @@ let formato = new Intl.NumberFormat('es-CL', {
   style: 'currency',
   currency: 'CLP'
 })
+// Cargar página completa antes de ejecutar el código JS
 if (document.readyState == "loading") {
   document.addEventListener("DOMContentLoaded", ready);
 } else {
   ready();
 }
+
+// Código a ejecutar luego de que cargue la página
 function ready() {
   const btnCarrito = document.querySelectorAll(".buy-now");
   btnCarrito.forEach((addToCartButton) => {
       addToCartButton.addEventListener("click", addToCardClicked);
   });
 
+  // Cantidad de cada producto
   var quantityInputs = document.getElementsByClassName("cart-quantity-input");
   for (var i = 0; i < quantityInputs.length; i++) {
     var input = quantityInputs[i];
     input.addEventListener("change", quantityChanged);
   }
 
+  // Eliminar productos del carro
   var removeCartItemButtons = document.getElementsByClassName("text-danger");
   for (var i = 0; i < removeCartItemButtons.length; i++) {
     var button = removeCartItemButtons[i];
@@ -29,6 +34,7 @@ function ready() {
   }
 }
 
+// Agregar elementos al carro
 function addToCardClicked(event) {
     const button = event.target;
     const item = button.closest(".product")
@@ -68,7 +74,7 @@ function addItemToShoppingCart (itemTitle, itemPrice, itemImg) {
             <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
           </div>
         </div>
-      </div> `;
+      </div>`;
 
       shoppingCartNow.innerHTML = shoppingCartContent;
       cartItems.append(shoppingCartNow);
@@ -87,6 +93,7 @@ function removeShoppingCartItem(event) {
     updateCartTotal();
 }
 
+// Cambio de cantidad
 function quantityChanged(event) {
   var input = event.target;
   if (isNaN(input.value) || input.value <= 0) {
@@ -96,6 +103,7 @@ function quantityChanged(event) {
   updateItemsTotal();
 }
 
+// Actualizar subtotal carro
 function updateCartTotal() {
   var cartItemContainer = document.getElementsByClassName("offcanvas-body")[0];
   var cartRows = cartItemContainer.getElementsByClassName("cart-row");
@@ -113,6 +121,7 @@ function updateCartTotal() {
   document.getElementById('subtotal').innerHTML = formato.format(total);
 }
 
+// Actualizar total carro
 function updateItemsTotal() {
   var cartItemContainer = document.getElementsByClassName("offcanvas-body")[0];
   var cartRows = cartItemContainer.getElementsByClassName("cart-row");
